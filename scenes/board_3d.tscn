@@ -1,0 +1,19 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckd1uurjxkg8j"]
+
+[ext_resource type="Script" uid="uid://1brcqswecd6" path="res://scripts/board_3d.gd" id="1_6newl"]
+[ext_resource type="PackedScene" uid="uid://c6s7p05d762dn" path="res://scenes/tower_piece.tscn" id="2_6scva"]
+[ext_resource type="Material" uid="uid://pfkqbv7j68uu" path="res://assets/materials/light_stone_material.tres" id="3_ymbnj"]
+[ext_resource type="PackedScene" uid="uid://b0yqgt50f3fij" path="res://scenes/foundation_tile.tscn" id="4_dpblc"]
+[ext_resource type="PackedScene" uid="uid://c2pdrwtfet7uv" path="res://scenes/column_obstacle.tscn" id="4_ldg68"]
+[ext_resource type="Material" uid="uid://btmbtrd5srkhj" path="res://assets/materials/dark_stone_material.tres" id="4_pdr7n"]
+[ext_resource type="PackedScene" uid="uid://cxgvshne4n2dd" path="res://scenes/bolder_obstacle.tscn" id="5_dpblc"]
+[ext_resource type="PackedScene" uid="uid://b4mnnltbgs4am" path="res://scenes/pawn.tscn" id="5_ldg68"]
+
+[node name="BOARD" type="Node3D"]
+script = ExtResource("1_6newl")
+tower_piece_scene = ExtResource("2_6scva")
+pawn_scene = ExtResource("5_ldg68")
+foundation_tile_scene = ExtResource("4_dpblc")
+obstacle_scenes = Array[PackedScene]([ExtResource("4_ldg68"), ExtResource("5_dpblc")])
+light_material = ExtResource("3_ymbnj")
+dark_material = ExtResource("4_pdr7n")

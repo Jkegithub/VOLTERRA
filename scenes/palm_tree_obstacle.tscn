@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2ri2xcb68pau"]
+
+[ext_resource type="PackedScene" uid="uid://c8s3bngcblqd8" path="res://scenes/palm_tree_source.tscn" id="1_4460r"]
+
+[node name="palm_tree_obstacle" type="Node3D" groups=["obstacles"]]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_4460r")]
+
+[editable path="Sketchfab_Scene"]

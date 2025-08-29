@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://btmbtrd5srkhj"]
+
+[ext_resource type="Texture2D" uid="uid://cdpnrwfqojx0c" path="res://assets/textures/dark_pawn_texture.png" id="1_hnn2t"]
+
+[resource]
+albedo_texture = ExtResource("1_hnn2t")

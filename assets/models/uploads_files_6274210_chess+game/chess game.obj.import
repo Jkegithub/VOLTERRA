@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c3tqwokpcw65u"
+path="res://.godot/imported/chess game.obj-321c461ee83b2ffffe4cd9af34fd6160.mesh"
+
+[deps]
+
+files=["res://.godot/imported/chess game.obj-321c461ee83b2ffffe4cd9af34fd6160.mesh"]
+
+source_file="res://assets/models/uploads_files_6274210_chess+game/chess game.obj"
+dest_files=["res://.godot/imported/chess game.obj-321c461ee83b2ffffe4cd9af34fd6160.mesh", "res://.godot/imported/chess game.obj-321c461ee83b2ffffe4cd9af34fd6160.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

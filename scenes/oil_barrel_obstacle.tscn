@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckx54se3b447g"]
+
+[ext_resource type="PackedScene" uid="uid://bmvpyt2lpkaxf" path="res://assets/models/oil_barrel_low_poly.glb" id="1_tbtsq"]
+
+[node name="OilBarrelObstacle" type="Node3D" groups=["obstacles"]]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_tbtsq")]
+
+[node name="Oil_barrel_Oil_barrel_0" parent="Sketchfab_Scene/Sketchfab_model/Oil_barrel_fbx/RootNode/Oil_barrel" index="0"]
+transform = Transform3D(100, 0, 0, 0, 120, 0, 0, 0, 100, 0, 3.63798e-12, 4816.2)
+
+[editable path="Sketchfab_Scene"]

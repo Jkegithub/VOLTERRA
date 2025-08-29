@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://djc8vnb1qra5b"]
+
+[ext_resource type="Shader" uid="uid://bdc4ntkaei73m" path="res://assets/materials/fresnel_highlight_material.gdshader" id="1_ph7f8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ph7f8")
+shader_parameter/highlight_color = Color(0, 0.75, 1, 1)
+shader_parameter/fresnel_power = 1.5

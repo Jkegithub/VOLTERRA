@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c4bin20hj56qs"]
+
+[ext_resource type="Texture2D" uid="uid://cq7ugvxjwd3wp" path="res://assets/textures/stone/stone_texture.png" id="1_gjlga"]
+
+[resource]
+albedo_color = Color(0.485703, 0.485704, 0.485703, 1)
+albedo_texture = ExtResource("1_gjlga")
+rim_tint = 0.24
+uv1_scale = Vector3(4, 3, 1)

@@ -1,0 +1,200 @@
+ROLLE: 
+	Du bist Spiele-Entwickler und hast die Aufgabe ein 3D-Spiel für PC WIndows-11 und Android zu erstellen
+
+ENTWICKLUNGSPLATTFORM: 
+	Zur Entwicklung bevorzugen wir kostenlos verfügbare Tools , hier GODOT 4.4.1 aktuell
+	https://godotengine.org/download/
+	möglichst kompatibel auf Windows entwickeln, Ausnahme erfragen
+
+SPIELREGELN : Volterra_REGELN-deutsch.pdf wird hochgeladen
+
+AUFGABE:
+	1. Übernehme Scripts Volterra im upload ( eine BETA Version, noch nicht fertig )
+	2. Spielregeln erfassen
+	3. Überprüfen der vorhandenen Implementierung
+	4. Abweichungen zum SOLL erfassen
+        5. Erfassen der Spielerweiterungen mit Sonderregeln
+	   upload-Dokument Sonderregeln
+	6. Umsetzen der Finalisierung 
+ZIELE: 
+	- höchste Qualität (erstellte Funktionen müssen PRAKTISCH validiert sein !)
+	- KEINE HALLUZINATIONEN !
+	- Grafische anmutende Umsetzung
+	- Es fehlen die Ambiente Elemente
+
+Konsolidierung:
+	- Wie kann ein Godot-Projekt "gepurged" werden, nur notwendige Dateien verbleiben
+
+PORTIERUNG: 
+	- als PC-Version
+	- als Android
+
+######
+
+=================================================
+PROJEKTSTATUS: VOLTERRA (Stand: 20.08.2025)
+=================================================
+
+Probleme:
+1) Godot Engine v4.4.1.stable.official.49a5bc7b6 - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 577.00 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce GTX 1060
+
+GameManager ist bereit. Spieler HELL beginnt.
+=============================================
+          VOLTERRA - SPIEL GESTARTET         
+=============================================
+Variante: rocks
+Brett-Größe: 6x6
+Sonderregeln:
+  - Steinmetz: false
+  - Baumeister: false
+  - Marktplatz: false
+Felsen-Positionen: ["D3", "D4"]
+=============================================
+Licht-Preset wird geladen: Warmer Nachmittag
+Ungültiger Zug: Turm bei B3 kann nicht als Quelle gewählt werden.
+Ungültiger Zug: Turm bei C2 kann nicht als Quelle gewählt werden.
+Ungültiger Zug: Turm bei E4 kann nicht als Quelle gewählt werden.
+UI-INPUT: Spieler wählt '1 Stein versetzen'.
+SUCHE ZIEL-TÜRME. Figur bei C3, Quelle bei B2
+TURM VERSETZT: 1 Stein(e) von B2 nach D2
+FIGUR BEWEGT: von C3 nach D2
+--- SPIELERWECHSEL --- >> Jetzt ist Spieler DUNKEL am Zug.
+FIGUR BEWEGT: von C4 nach B3
+SUCHE QUELL-TÜRME für Spieler DUNKEL bei B3
+UI-INPUT: Spieler wählt '1 Stein versetzen'.
+SUCHE ZIEL-TÜRME. Figur bei B3, Quelle bei C4
+TURM VERSETZT: 1 Stein(e) von C4 nach C3
+--- SPIELERWECHSEL --- >> Jetzt ist Spieler HELL am Zug.
+Ungültiger Zug: Turm bei C3 kann nicht als Quelle gewählt werden.
+Ungültiger Zug: Turm bei C2 kann nicht als Quelle gewählt werden.
+UI-INPUT: Spieler wählt '1 Stein versetzen'.
+SUCHE ZIEL-TÜRME. Figur bei D2, Quelle bei C1
+TURM VERSETZT: 1 Stein(e) von C1 nach C3
+FIGUR BEWEGT: von D2 nach C3
+--- SPIELERWECHSEL --- >> Jetzt ist Spieler DUNKEL am Zug.
+UI-INPUT: Spieler wählt '1 Stein versetzen'.
+SUCHE ZIEL-TÜRME. Figur bei B3, Quelle bei C2
+TURM VERSETZT: 1 Stein(e) von C2 nach A2
+FIGUR BEWEGT: von B3 nach A2
+--- SPIELERWECHSEL --- >> Jetzt ist Spieler HELL am Zug.
+UI-INPUT: Spieler wählt '1 Stein versetzen'.
+SUCHE ZIEL-TÜRME. Figur bei C3, Quelle bei B4
+TURM VERSETZT: 1 Stein(e) von B4 nach D2
+FIGUR BEWEGT: von C3 nach D2
+--- SPIELERWECHSEL --- >> Jetzt ist Spieler DUNKEL am Zug.
+UI-INPUT: Spieler wählt '1 Stein versetzen'.
+SUCHE ZIEL-TÜRME. Figur bei A2, Quelle bei B3
+TURM VERSETZT: 1 Stein(e) von B3 nach A3
+FIGUR BEWEGT: von A2 nach B1
+--- SPIELERWECHSEL --- >> Jetzt ist Spieler HELL am Zug.
+UI-INPUT: Spieler wählt '2 Steine versetzen'.
+SUCHE ZIEL-TÜRME. Figur bei D2, Quelle bei C3
+TURM VERSETZT: 2 Stein(e) von C3 nach D1
+FIGUR BEWEGT: von D2 nach E1
+--- SPIELERWECHSEL --- >> Jetzt ist Spieler DUNKEL am Zug.
+Mache letzten Zug rückgängig.
+
+==> Zug zurücknehmen: es gibt eine neue Hindernisplatzierung, das Spiel ist unsauber
+++++++++++++++++++++++++++++++++++
+## Kurzfristig (Finalisierung & Release)
+Das Ziel ist, die Version 1.0 fertigzustellen und lauffähig zu machen.
+
+Offene Aufgaben:
+
+Sounds & Atmosphäre:
+
+Den ausgewählten Spielstart-Sound integrieren.
+
+Entscheiden, ob die Modus-Erkennung (Steinmetz etc.) eine Ansage oder einen Sound-Effekt bekommen soll und dies umsetzen.
+
+Ein finales Abmischen aller Lautstärken für ein stimmiges Klangbild.
+
+Export (Build & Deployment):
+
+Das Projekt bereinigen ("purgen"), um die Dateigröße zu reduzieren.
+
+Den finalen Build für PC (Windows) erstellen.
+
+Den finalen Build für Android erstellen.
+
+----------------
+Kürzlich gelöste Probleme:
+
+Die Hindernis-Platzierung ist jetzt fair, verteilt und variantenreich.
+
+Alle bekannten Bugs in der UI (Aktionstext, Buttons) und der Zuglogik (Highlighting) sind behoben.
+
+Die Spielfiguren-Platzierung ist jetzt intelligent und vermeidet Kollisionen mit Hindernissen.
+
+Das Koordinatensystem ist visuell und im Debug-Log einheitlich.
+
+## Langfristig (Nach Version 1.0)
+Diese Punkte sind als wertvolle Erweiterungen für zukünftige Versionen des Spiels geplant.
+
+Spielmechanik "Nachschub" für Arena-Modus:
+
+Konzept: Um Ressourcenknappheit auf großen Arena-Brettern zu beheben, erhält ein Spieler für das Erreichen einer bestimmten Turmhöhe (z.B. 4) einen neuen Stein aus dem Vorrat.
+
+Status: Auf die "Nach-Release"-Wunschliste gesetzt.
+
+Replay-Funktion:
+
+Konzept: Ein anspruchsvolles Feature, um abgeschlossene Partien Zug für Zug noch einmal ansehen zu können.
+
+Status: Als großes Zukunfts-Feature eingeplant. Die history-Funktion bildet bereits die technische Grundlage dafür.
++++++++++++++++++++++++++++++++++++++++
+
+4.  **Politur: Atmosphäre & Sound finalisieren:**
+    * **Beleuchtung:** Überprüfen und ggf. Fein-Tuning der Lichtstimmung.
+    * **Sound:** Finale Überprüfung der Soundeffekte und deren Lautstärke.
+    * **Diorama-Szenerie:** Gegebenenfalls die von dir erstellten Deko-Elemente (Mauern, Zypressen etc.) in die Szene integrieren.
+
+==> 6. ## 2. Wie man das Projekt verkleinert
+Wir müssen die Ursache beheben: die großen Dateien im assets-Ordner.
+
+Texturen optimieren (WICHTIGSTER PUNKT):
+
+Verkleinern: Öffne deine großen Texturdateien in einem Bildbearbeitungsprogramm (wie GIMP, Photoshop oder einem Online-Tool) und skaliere sie auf eine vernünftige Größe. Für dieses Spiel ist eine Auflösung von 1024x1024 Pixel (1K) oder maximal 2048x2048 (2K) absolut ausreichend. Das allein wird die Projektgröße drastisch reduzieren.
+
+Godots VRAM-Kompression nutzen: Das ist die beste Methode innerhalb von Godot.
+
+Klicke im FileSystem-Dock eine Texturdatei an (z.B. stone_texture.png).
+
+Gehe zum Importieren-Dock (neben "Szene").
+
+Ändere unter Compress -> Mode die Einstellung von Lossless auf VRAM Compressed.
+
+Klicke unten auf den "Neu importieren"-Button.
+Godot komprimiert die Textur dann für die Grafikkarte, was die Dateigröße im .godot-Ordner und den Speicherverbrauch im Spiel massiv senkt.
+
+icon.png austauschen: Ersetze die Datei mit einer kleineren Version, z.B. 512x512 Pixel.
+
+
+---
+
+### 3. Zukünftige Ideen & Umsetzungsüberlegungen
+
+Diese Punkte sind für die Erstveröffentlichung nicht zwingend notwendig, wurden aber als wertvolle Erweiterungen identifiziert:
+
+- **Spielmechanik "Nachschub" für Arena-Modus:**
+    * **Konzept:** Um die Ressourcenknappheit auf großen Arena-Brettern zu beheben.
+    * **Umsetzungsidee:** Wenn ein Spieler einen Turm auf eine bestimmte Höhe (z.B. 4) baut, erhält er einen neuen Stein seiner Farbe aus dem Vorrat, den er an einen seiner bestehenden Türme angrenzend platzieren darf.
+    * **Status:** Auf die "Nach-Release"-Wunschliste gesetzt.
+
+Offene Aufgaben & Pläne
+
+Mittelfristige Pläne (Atmosphäre & Erweiterung)
+Szenerie & Design optimieren ("Diorama-Konzept"):
+
+Das aktuelle Fundament durch Requisiten erweitern (z.B. Mauern, Zypressen, Fässer), um die Illusion eines Burghofs oder einer toskanischen Szene zu schaffen.
+
+Langfristiges Ziel (Großes Feature)
+Replay-Funktion:
+
+Das anspruchsvolle, aber sehr lohnende Feature, abgeschlossene Partien Zug für Zug noch einmal ansehen zu können. Das erfordert einen eigenen "Replay-Modus" und eine UI zur Steuerung.
+
+Wartung & Pflege (Nach Abschluss einer Phase)
+Code-Konsolidierung: Wie von Ihnen gewünscht, werden wir nach Abschluss einer großen Phase (wie z.B. der Implementierung aller Spielvarianten) das board_3d.gd-Skript noch einmal durchgehen und die Funktionen in ihre logischen Blöcke sortieren, um die Lesbarkeit zu erhalten.
+
+

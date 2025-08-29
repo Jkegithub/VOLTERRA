@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0t4hwwdyer3i"]
+
+[ext_resource type="PackedScene" uid="uid://dj2u0unb8tawc" path="res://assets/models/trashcan_mesh.glb" id="1_qgs2m"]
+[ext_resource type="ArrayMesh" uid="uid://xwubphecvjk8" path="res://assets/materials/trash_mesh.tres" id="2_0d2fr"]
+
+[node name="TrashObstacle" type="Node3D" groups=["obstacles"]]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_qgs2m")]
+
+[node name="Trashcan_Mesh_Trashcan_Mat_0" parent="Sketchfab_Scene/Sketchfab_model/bb4725c6640f4775b9de93933848a68f_fbx/RootNode/Trashcan_Mesh/Object_4" index="0"]
+transform = Transform3D(150, 0, 0, 0, -150, 2.26494e-05, 0, -2.26494e-05, -150, 0, 0, 0)
+mesh = ExtResource("2_0d2fr")
+
+[editable path="Sketchfab_Scene"]

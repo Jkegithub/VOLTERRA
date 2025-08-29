@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4mnnltbgs4am"]
+
+[ext_resource type="Script" uid="uid://bmnbx40dxyacx" path="res://scripts/pawn.gd" id="1_bab8k"]
+[ext_resource type="Texture2D" uid="uid://cq7ugvxjwd3wp" path="res://assets/textures/stone/stone_texture.png" id="3_0gq48"]
+[ext_resource type="ArrayMesh" uid="uid://c3tqwokpcw65u" path="res://assets/models/uploads_files_6274210_chess+game/chess game.obj" id="3_eqwak"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1472"]
+cull_mode = 1
+albedo_texture = ExtResource("3_0gq48")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqwak"]
+transparency = 1
+albedo_color = Color(0.287, 0.554, 0.818, 0.464)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y1472"]
+radius = 0.35
+height = 3.3
+
+[node name="Pawn" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+script = ExtResource("1_bab8k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.2, 0)
+mesh = ExtResource("3_eqwak")
+surface_material_override/0 = SubResource("StandardMaterial3D_y1472")
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, -0.2, 0)
+visible = false
+mesh = ExtResource("3_eqwak")
+surface_material_override/0 = SubResource("StandardMaterial3D_eqwak")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_y1472")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bfm56hkarp86t"]
+
+[ext_resource type="Texture2D" uid="uid://d2fd6uc2lfisg" path="res://assets/models/palm_tree_model_3.png" id="1_q31ph"]
+[ext_resource type="Texture2D" uid="uid://cxkq1xfvrpne1" path="res://assets/models/palm_tree_model_4.png" id="2_dkk0k"]
+[ext_resource type="Texture2D" uid="uid://bspysowo70lvg" path="res://assets/models/palm_tree_model_5.png" id="3_4m8qw"]
+
+[resource]
+resource_name = "sand_mat"
+cull_mode = 2
+albedo_color = Color(0.205506, 0.345253, 0.171778, 0.933333)
+albedo_texture = ExtResource("1_q31ph")
+metallic_texture = ExtResource("2_dkk0k")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_dkk0k")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_4m8qw")

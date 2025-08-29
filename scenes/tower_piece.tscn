@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6s7p05d762dn"]
+
+[ext_resource type="Script" uid="uid://dhwnoa5wbxcxa" path="res://scripts/tower_piece.gd" id="1_4m1ke"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3jkne"]
+size = Vector3(1, 0.25, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d55g8"]
+size = Vector3(1, 0.25, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdiw2"]
+transparency = 1
+albedo_color = Color(1, 1, 0, 0.4)
+
+[node name="TowerPiece" type="Node3D" groups=["board_element"]]
+script = ExtResource("1_4m1ke")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3jkne")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_d55g8")
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.01, 0, 0, 0, 1.1, 0, 0, 0, 1.01, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_3jkne")
+surface_material_override/0 = SubResource("StandardMaterial3D_gdiw2")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+billboard = 1
+text = "1"
+font_size = 64
+outline_size = 10
+
+[node name="ColorLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 0)
+visible = false
+billboard = 1
+text = "W"
+font_size = 80
+
+[connection signal="input_event" from="StaticBody3D" to="." method="_on_static_body_3d_input_event"]

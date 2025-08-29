@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b0f1b0648hts0"]
+
+[ext_resource type="Texture2D" uid="uid://cas6asi2je6fw" path="res://assets/models/cliff_rock_two_obj_0.png" id="1_34il8"]
+[ext_resource type="Texture2D" uid="uid://donwko8mievmh" path="res://assets/models/cliff_rock_two_obj_1.png" id="2_kfatx"]
+[ext_resource type="Texture2D" uid="uid://decaqw4kr6m2u" path="res://assets/models/cliff_rock_two_obj_2.png" id="3_frb7g"]
+
+[resource]
+resource_name = "Rock_01_ZBrush1SG"
+cull_mode = 2
+albedo_color = Color(0.521141, 0.521141, 0.521141, 1)
+albedo_texture = ExtResource("1_34il8")
+metallic = 1.0
+metallic_texture = ExtResource("2_kfatx")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_kfatx")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_frb7g")
+ao_enabled = true
+ao_texture = ExtResource("2_kfatx")

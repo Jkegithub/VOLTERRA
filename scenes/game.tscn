@@ -1,0 +1,238 @@
+[gd_scene load_steps=35 format=3 uid="uid://r46va48hgagr"]
+
+[ext_resource type="PackedScene" uid="uid://ckd1uurjxkg8j" path="res://scenes/board_3d.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cd48aul7wrisf" path="res://assets/models/banco_a_la_sombra.glb" id="2_suyxu"]
+[ext_resource type="PackedScene" uid="uid://c2pdrwtfet7uv" path="res://scenes/column_obstacle.tscn" id="3_ca42v"]
+[ext_resource type="AudioStream" uid="uid://cyvqhsyej2vnl" path="res://assets/audio/stonewisch__ceramic-scratch.wav" id="3_p57ef"]
+[ext_resource type="PackedScene" uid="uid://d1us8en0ps6t7" path="res://assets/models/long_wall_-_fougeres_-_urbanistes.glb" id="3_sgl2t"]
+[ext_resource type="PackedScene" uid="uid://ck0r5p42fthi2" path="res://scenes/move_amount_ui.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bciu8ox607bot" path="res://assets/models/torre_mussa_-_benifaio.glb" id="4_qouja"]
+[ext_resource type="PackedScene" uid="uid://cxgvshne4n2dd" path="res://scenes/bolder_obstacle.tscn" id="4_rysoc"]
+[ext_resource type="PackedScene" uid="uid://080ovd61emhk" path="res://scenes/cursor.tscn" id="4_u5sy4"]
+[ext_resource type="AudioStream" uid="uid://chdq8fjxcfono" path="res://assets/audio/victory-fanfare.wav" id="5_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://2le1iei0t5hg" path="res://scenes/GameOverUI.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://d2ri2xcb68pau" path="res://scenes/palm_tree_obstacle.tscn" id="5_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://dp551b6r64f37" path="res://assets/models/bundled_rope_coil__mid.glb" id="5_wljb1"]
+[ext_resource type="PackedScene" uid="uid://b0t4hwwdyer3i" path="res://scenes/trash_obstacle.tscn" id="6_264po"]
+[ext_resource type="AudioStream" uid="uid://31nnb10qkhps" path="res://assets/audio/flopp_stone_running-04.wav" id="6_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://dmxxaeuo71dap" path="res://assets/models/lantern.glb" id="6_v2yb1"]
+[ext_resource type="PackedScene" uid="uid://ckx54se3b447g" path="res://scenes/oil_barrel_obstacle.tscn" id="7_1kice"]
+[ext_resource type="PackedScene" uid="uid://c82bb6j4txnmm" path="res://assets/models/modular_ancient_house_01.glb" id="7_js0lu"]
+[ext_resource type="Texture2D" uid="uid://car82qh6r255d" path="res://assets/textures/stone/PavingStones142_1K-JPG_Color.jpg" id="8_dinhu"]
+[ext_resource type="PackedScene" uid="uid://xyhhrdo64crc" path="res://assets/models/rock_scan_018.glb" id="8_gxtfn"]
+[ext_resource type="AudioStream" uid="uid://dy28s6dpb73h1" path="res://assets/audio/dipp_videogame-menu-button-click.wav" id="8_ir15t"]
+[ext_resource type="AudioStream" uid="uid://dnmvxy7thjyg5" path="res://assets/audio/tockk__wood-click-1.wav" id="9_ca42v"]
+[ext_resource type="PackedScene" uid="uid://bcl7wumehsthu" path="res://assets/models/wooden_barrel_realsti.glb" id="9_twgab"]
+[ext_resource type="Script" uid="uid://bohrg6xomeajh" path="res://scripts/camera_controller.gd" id="9_vtaks"]
+[ext_resource type="PackedScene" uid="uid://b6ctiki4wvjt6" path="res://assets/models/puit___water_well.glb" id="10_02fa5"]
+[ext_resource type="AudioStream" uid="uid://bg5h0702ei65j" path="res://assets/audio/boing__sword_hit_lightattack_block.wav" id="10_rysoc"]
+[ext_resource type="PackedScene" uid="uid://2fxu8vh7vg0i" path="res://scenes/InstructionsUI.tscn" id="10_vtaks"]
+[ext_resource type="AudioStream" uid="uid://c48o1hpuqqmd8" path="res://assets/audio/klackklickklackkk__synth-ui-interface-click-button-drip-drop-plop-wood-stick.wav" id="11_ca42v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvuet"]
+albedo_texture = ExtResource("8_dinhu")
+uv1_scale = Vector3(5, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trtic"]
+material = SubResource("StandardMaterial3D_kvuet")
+size = Vector3(25, 0.5, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trtic"]
+albedo_color = Color(1, 0.843137, 0, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dinhu"]
+sky_top_color = Color(0.827451, 0.827451, 0.827451, 1)
+sky_horizon_color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[sub_resource type="Sky" id="Sky_kvuet"]
+sky_material = SubResource("ProceduralSkyMaterial_dinhu")
+
+[sub_resource type="Environment" id="Environment_p57ef"]
+background_mode = 2
+sky = SubResource("Sky_kvuet")
+ambient_light_source = 2
+ambient_light_color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[node name="Game" type="Node"]
+
+[node name="Diorama" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Diorama"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
+mesh = SubResource("BoxMesh_trtic")
+skeleton = NodePath("../..")
+
+[node name="BankRuine" parent="Diorama" instance=ExtResource("2_suyxu")]
+visible = false
+
+[node name="MauerHinten" parent="Diorama" instance=ExtResource("3_sgl2t")]
+visible = false
+
+[node name="Turm" parent="Diorama" instance=ExtResource("4_qouja")]
+visible = false
+
+[node name="Seil" parent="Diorama" instance=ExtResource("5_wljb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.522594, 0)
+visible = false
+
+[node name="Laterne" parent="Diorama" instance=ExtResource("6_v2yb1")]
+visible = false
+
+[node name="MauerLinks" parent="Diorama" instance=ExtResource("7_js0lu")]
+visible = false
+
+[node name="RockKueste" parent="Diorama" instance=ExtResource("8_gxtfn")]
+visible = false
+
+[node name="Fass" parent="Diorama" instance=ExtResource("9_twgab")]
+visible = false
+
+[node name="Brunnen" parent="Diorama" instance=ExtResource("10_02fa5")]
+visible = false
+
+[node name="BOARD" parent="." node_paths=PackedStringArray("camera_controller", "camera_pivot", "cursor", "floor_mesh_instance", "directional_light", "world_environment", "move_amount_ui", "player_turn_label", "action_hint_label", "cancel_action_button", "undo_button", "invalid_move_overlay", "steinmetz_button", "baumeister_button", "move_sound_player", "pawn_move_sound_player", "victory_sound_player", "undo_sound_player", "ui_click_sound_player", "select_sound_player", "error_sound_player") instance=ExtResource("2_lnu2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15, 0.25, 3.25)
+obstacle_scenes = Array[PackedScene]([ExtResource("3_ca42v"), ExtResource("4_rysoc"), ExtResource("5_ssvqc"), ExtResource("6_264po"), ExtResource("7_1kice")])
+camera_controller = NodePath("../CameraPivot")
+camera_pivot = NodePath("../CameraPivot")
+cursor = NodePath("Cursor")
+floor_mesh_instance = NodePath("../Diorama/Floor")
+directional_light = NodePath("../DirectionalLight3D")
+world_environment = NodePath("../WorldEnvironment")
+move_amount_ui = NodePath("../MoveAmountUI")
+player_turn_label = NodePath("../InstructionsUI/PlayerTurnLabel")
+action_hint_label = NodePath("../InstructionsUI/ActionHintLabel")
+cancel_action_button = NodePath("../CancelActionButton")
+undo_button = NodePath("../UndoButton")
+invalid_move_overlay = NodePath("../InvalidMoveOverlay")
+steinmetz_button = NodePath("../SteinmetzButton")
+baumeister_button = NodePath("../BaumeisterButton")
+move_sound_player = NodePath("MoveSoundPlayer")
+pawn_move_sound_player = NodePath("PawnMoveSoundPlayer")
+victory_sound_player = NodePath("VictorySoundPlayer")
+undo_sound_player = NodePath("UNDOSoundPlayer")
+ui_click_sound_player = NodePath("UIClickSoundPlayer")
+select_sound_player = NodePath("SelectSoundPlayer")
+error_sound_player = NodePath("ErrorSoundPlayer")
+gold_material = SubResource("StandardMaterial3D_trtic")
+
+[node name="MoveSoundPlayer" type="AudioStreamPlayer" parent="BOARD"]
+stream = ExtResource("3_p57ef")
+
+[node name="Cursor" parent="BOARD" instance=ExtResource("4_u5sy4")]
+
+[node name="VictorySoundPlayer" type="AudioStreamPlayer" parent="BOARD"]
+stream = ExtResource("5_0tnpc")
+
+[node name="PawnMoveSoundPlayer" type="AudioStreamPlayer" parent="BOARD"]
+stream = ExtResource("6_kvpfn")
+
+[node name="UIClickSoundPlayer" type="AudioStreamPlayer" parent="BOARD"]
+stream = ExtResource("8_ir15t")
+
+[node name="SelectSoundPlayer" type="AudioStreamPlayer" parent="BOARD"]
+stream = ExtResource("9_ca42v")
+
+[node name="ErrorSoundPlayer" type="AudioStreamPlayer" parent="BOARD"]
+stream = ExtResource("10_rysoc")
+
+[node name="UNDOSoundPlayer" type="AudioStreamPlayer" parent="BOARD"]
+stream = ExtResource("11_ca42v")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p57ef")
+
+[node name="MoveAmountUI" parent="." instance=ExtResource("4_lbhrr")]
+visible = false
+
+[node name="GameOverUI" parent="." instance=ExtResource("5_iywne")]
+visible = false
+mouse_filter = 2
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 3.675, 0, 3.675)
+script = ExtResource("9_vtaks")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(0.998719, 0.0505929, 0, -0.0305181, 0.602435, 0.797584, 0.0403521, -0.796562, 0.603208, 0, 4, 4)
+cull_mask = 1047553
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.286788, 0.409576, 0, 0.819151, 0.573576, -0.5, -0.496731, 0.709406, 0, 0, 0)
+shadow_enabled = true
+
+[node name="InstructionsUI" parent="." instance=ExtResource("10_vtaks")]
+mouse_filter = 2
+
+[node name="CancelActionButton" type="Button" parent="."]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 146.0
+offset_bottom = 15.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Aktion abbrechen"
+
+[node name="SteinmetzButton" type="Button" parent="."]
+offset_right = 128.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 30
+text = "Steinmetz - Zug ??
+   zuerst hier anwählen  !!"
+
+[node name="BaumeisterButton" type="Button" parent="."]
+offset_right = 139.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 30
+text = "Baumeister -  Zug ??
+   zuerst hier anwählen  !!"
+
+[node name="UndoButton" type="Button" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -39.0
+offset_bottom = 39.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "letzten Zug 
+zurück nehmen"
+
+[node name="InvalidMoveOverlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 0.396078)
+
+[connection signal="move_one_piece" from="MoveAmountUI" to="BOARD" method="_on_move_amount_ui_move_one_piece"]
+[connection signal="move_two_pieces" from="MoveAmountUI" to="BOARD" method="_on_move_amount_ui_move_two_pieces"]
+[connection signal="pressed" from="MoveAmountUI/CenterContainer/VBoxContainer/ABBRECHEN" to="BOARD" method="_on_abbrechen_pressed"]
+[connection signal="pressed" from="CancelActionButton" to="BOARD" method="_on_cancel_action_button_pressed"]
+[connection signal="pressed" from="SteinmetzButton" to="BOARD" method="_on_steinmetz_button_pressed"]
+[connection signal="pressed" from="BaumeisterButton" to="BOARD" method="_on_baumeister_button_pressed"]
+[connection signal="pressed" from="UndoButton" to="BOARD" method="_on_undo_button_pressed"]
+
+[editable path="Diorama/BankRuine"]
+[editable path="Diorama/MauerHinten"]
+[editable path="Diorama/Turm"]
+[editable path="Diorama/Seil"]
+[editable path="Diorama/Laterne"]
+[editable path="Diorama/MauerLinks"]
+[editable path="Diorama/RockKueste"]
+[editable path="Diorama/Fass"]
+[editable path="Diorama/Brunnen"]
+[editable path="BOARD"]
+[editable path="MoveAmountUI"]
+[editable path="GameOverUI"]
+[editable path="InstructionsUI"]

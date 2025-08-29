@@ -1,0 +1,29 @@
+Absolut. Hier ist eine klare Zusammenfassung der von uns entwickelten Zusatzregeln und Abweichungen zu den offiziellen PDF-Regeln für die beiden Hauptvarianten, die Sie spielen können.
+
+Variante: Klassisch (Großes Brett)
+Diese Variante nutzt das Grundprinzip des Spiels, passt es aber für größere, frei wählbare Spielfelder an.
+
+
+Variable Spielfeldgröße: Anders als im Original, das ein festes 4x5-Brett vorschreibt, können Sie in dieser Variante die Größe frei wählen (z.B. 6x8, 8x8 etc.).
+
+"Freie Seite"-Regel DEAKTIVIERT: Die wichtigste Abweichung. Die Originalregel, dass ein Turm eine freie Seite haben muss, um versetzt zu werden, ist hier 
+
+ausgeschaltet. Dies war notwendig, da auf einem großen, voll besetzten Brett zu Beginn kein einziger Turm in der Mitte eine freie Seite hätte, was das Spiel blockieren würde.
+
+Zusatzregel "Patt": Wir haben eine neue Siegbedingung eingeführt, die nicht im PDF steht. Das Spiel endet auch, wenn dieselbe Spielstellung dreimal wiederholt wird. In diesem Fall gewinnt der Spieler mit dem aktuell höchsten Turm, um Endlos-Partien zu verhindern.
+
+Variante: Arena
+Diese Variante ist strategisch am weitesten vom Original entfernt und führt ein dynamisches Spielfeld ein.
+
+Begrenztes Startfeld: Das Spiel beginnt nicht auf einem vollen Brett, sondern auf einer kleineren "Insel" aus Türmen (aktuell 3x3), die von leeren, aber klickbaren "Bauplätzen" umgeben ist.
+
+"Freie Seite"-Regel AKTIVIERT: Da die Arena von leeren Feldern umgeben ist, gibt es immer Türme mit freien Seiten. Daher ist diese strategische Regel aus dem Original  hier 
+
+aktiv.
+
+
+Größte Abweichung - Expansion: Entgegen der Originalregel, dass Türme nicht auf leere Felder gesetzt werden dürfen, ist dies in der Arena-Variante 
+
+erlaubt und das Kernprinzip. Spieler können Türme von der Arena auf die leeren Bauplätze versetzen, um das Spielfeld aktiv zu erweitern und zu formen.
+
+Zusatzregel "Patt": Die von uns eingeführte Regel zum Unentschieden bei dreifacher Stellungswiederholung gilt auch hier.

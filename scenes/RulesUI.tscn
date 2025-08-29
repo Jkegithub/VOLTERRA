@@ -1,0 +1,546 @@
+[gd_scene load_steps=14 format=3 uid="uid://c2l0531p5rucg"]
+
+[ext_resource type="Texture2D" uid="uid://b8yfxfxb73b0k" path="res://assets/rules/Volterra_REGELN_08_LOGO_D.jpg" id="1_ln1ka"]
+[ext_resource type="Script" uid="uid://dad02g5mlq7g0" path="res://scripts/RulesUI.gd" id="1_mj7vc"]
+[ext_resource type="Texture2D" uid="uid://c3xl4pam4uj0e" path="res://assets/rules/Volterra_REGELN_09.jpg" id="3_e7b0a"]
+[ext_resource type="Texture2D" uid="uid://5go4ikp0fsmr" path="res://assets/rules/Volterra_REGELN_10.jpg" id="4_dko2w"]
+[ext_resource type="Texture2D" uid="uid://6dstrsnyg808" path="res://assets/rules/Volterra_REGELN_11.jpg" id="5_rmnmh"]
+[ext_resource type="Texture2D" uid="uid://dqbhjlr4gnp0n" path="res://assets/rules/Volterra_REGELN_12.jpg" id="6_ssde0"]
+[ext_resource type="Texture2D" uid="uid://dfj4jn0eaxymq" path="res://assets/rules/Volterra_REGELN_13.jpg" id="7_4si7v"]
+[ext_resource type="Texture2D" uid="uid://naniawuwnkqu" path="res://assets/rules/Volterra_REGELN_14.jpg" id="8_sbulk"]
+[ext_resource type="FontFile" uid="uid://bww00nyck7bak" path="res://assets/fonts/Alegreya_SC/AlegreyaSC-ExtraBold.ttf" id="9_rmnmh"]
+[ext_resource type="FontFile" uid="uid://bmowavfuiii65" path="res://assets/fonts/Cinzel/static/Cinzel-SemiBold.ttf" id="10_4si7v"]
+[ext_resource type="FontFile" uid="uid://lnr2b8gtpmyr" path="res://assets/fonts/Cinzel/static/Cinzel-Regular.ttf" id="10_sbulk"]
+[ext_resource type="FontFile" uid="uid://dsy1np3loyin3" path="res://assets/fonts/Fira_Code/static/FiraCode-Regular.ttf" id="12_4si7v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssde0"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.156863, 0.156863, 0.156863, 0.941176)
+
+[node name="RulesUI" type="PanelContainer"]
+custom_minimum_size = Vector2(500, 650)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -15.5
+offset_right = 50.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ssde0")
+script = ExtResource("1_mj7vc")
+
+[node name="MainLayout" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="SCHLIESSEN" type="Button" parent="MainLayout/ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.866241, 0, 0.15359, 1)
+text = " Schliessen "
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainLayout/ScrollContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TextureRectLogoD" type="TextureRect" parent="MainLayout/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_ln1ka")
+stretch_mode = 2
+
+[node name="TextureRectRule01" type="TextureRect" parent="MainLayout/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_e7b0a")
+stretch_mode = 2
+
+[node name="TextureRectRule02" type="TextureRect" parent="MainLayout/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_dko2w")
+stretch_mode = 2
+
+[node name="TextureRectRule03" type="TextureRect" parent="MainLayout/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_rmnmh")
+stretch_mode = 2
+
+[node name="TextureRectRule04" type="TextureRect" parent="MainLayout/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_ssde0")
+stretch_mode = 2
+
+[node name="TextureRectRule05" type="TextureRect" parent="MainLayout/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_4si7v")
+stretch_mode = 2
+
+[node name="TextureRectRule06" type="TextureRect" parent="MainLayout/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_sbulk")
+stretch_mode = 2
+
+[node name="SonderregelnTitelLabel" type="Label" parent="MainLayout/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.503305, 0.986255, 0.95167, 1)
+theme_override_fonts/font = ExtResource("9_rmnmh")
+theme_override_font_sizes/font_size = 35
+text = "Zusatzregeln   &   Spiel - Varianten"
+horizontal_alignment = 1
+
+[node name="Copyrigths" type="Label" parent="MainLayout/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.503305, 0.986255, 0.95167, 1)
+theme_override_fonts/font = ExtResource("10_sbulk")
+theme_override_font_sizes/font_size = 20
+text = "Copyrights - Original by Steffen Spiele 2020
+3D-Umsetzung + Varianten  :
+  *** by Hotzenwald Digital  ***
+J.K. --- Anno 2025 "
+horizontal_alignment = 1
+
+[node name="+++++++++++" type="Label" parent="MainLayout/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.503305, 0.986255, 0.95167, 1)
+theme_override_fonts/font = ExtResource("9_rmnmh")
+theme_override_font_sizes/font_size = 35
+text = "+++++++++++++++++++++++++++++"
+horizontal_alignment = 1
+
+[node name="SpielEndeRegelLabel" type="Label" parent="MainLayout/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.501961, 0.984314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("10_4si7v")
+theme_override_font_sizes/font_size = 24
+text = "+++ Spiel - Ende - Regel
+Die Partie endet, sobald ein Spieler seinen Zug beginnt, aber nicht mehr die Möglichkeit hat,  *beide* Aktionen (eine Figur-Bewegung  *UND*  eine Turm-Bewegung) auszuführen. Es reicht nicht, nur eine der beiden Aktionen machen zu können. Wer dann den höchsten Turm hat, gewinnt.
+"
+autowrap_mode = 2
+
+[node name="InselRegelLabel" type="Label" parent="MainLayout/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.501961, 0.984314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("10_4si7v")
+theme_override_font_sizes/font_size = 24
+text = "+++ Die Insel - Regel
+Wird durch das Versetzen eines Turms das Spielfeld in zwei oder mehr getrennte Bereiche (\"Inseln\") aufgeteilt, gilt: 
+- 1.)  Figuren auf getrennten Inseln: 
+  	       Jeder Spieler darf für den Rest 
+         der Partie nur noch auf seiner 
+         eigenen Insel Züge ausführen. 
+- 2.)  Figuren auf derselben Insel: 
+         Alle Türme auf der unbesetzten 
+         Insel werden vom Spielfeld    
+         entfernt.
+"
+autowrap_mode = 2
+
+[node name="SteinmetzRegelLabel" type="Label" parent="MainLayout/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.501961, 0.984314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("10_4si7v")
+theme_override_font_sizes/font_size = 24
+text = "+++ Die  Sonderregel   \"Steinmetz\"
+Anstatt einen Turm zu versetzen, darfst du als eine deiner zwei Aktionen einen einzelnen, eigenen Stein von einem Turm mit freier Seite vom Brett nehmen. Diesen Stein darfst du auf einen  **beliebigen**  anderen Turm auf dem gesamten Spielfeld setzen.
+"
+autowrap_mode = 2
+
+[node name="BaumeisterRegelLabel" type="Label" parent="MainLayout/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.501961, 0.984314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("10_4si7v")
+theme_override_font_sizes/font_size = 24
+text = "+++ Sonderregel \"Baumeister\"
+Jeder Spieler kann **einmal pro Spiel** einen Turm versetzen, der eigentlich keine freie Seite hat und daher blockiert wäre. Dieser \"Joker\"-Zug erlaubt es, aus einer komplett eingebauten Position auszubrechen.
+"
+autowrap_mode = 2
+
+[node name="MarktplatzRegelLabel" type="Label" parent="MainLayout/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.501961, 0.984314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("10_4si7v")
+theme_override_font_sizes/font_size = 24
+text = "+++ Sonderregel \"Marktplatz\"
+Ein oder mehrere Felder in der Brettmitte werden als \"Marktplatz\" markiert. Türme auf diesen Feldern ignorieren immer die \"freie Seite\"-Regel.
+"
+autowrap_mode = 2
+
+[node name="StrategieKapitelLabel" type="Label" parent="MainLayout/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.501961, 0.984314, 0.952941, 1)
+theme_override_fonts/font = ExtResource("12_4si7v")
+theme_override_font_sizes/font_size = 22
+text = "+++++++++++++++++++++++++++++++++++++++++++++++++++++++
++                                                      +
++    STRATEGIE-KAPITEL : SONDERREGELN                 +
++                                                      +
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Unterschied Baumeister / Steinmetz :
+
+Baumeister: 
+Bricht Regel für Quell-Turm (freie Seite) 
+-> Reichweite bleibt normal.
+
+Steinmetz: 
+Bricht Regel für Ziel-Turm (Nachbarschaft) 
+-> Reichweite wird unbegrenzt.
+
+
+
+// LEGENDE //////////////////////////////////////////////////
+
+  ( Fw ) -  Figur, weiß (hell)
+  ( Fs ) -  Figur, schwarz (dunkel)
+
+  ( H2 ) -  Heller Turm der Höhe 2
+  ( D3 ) -  Dunkler Turm der Höhe 3
+
+  ( .. ) -  Leeres Feld / Baufeld
+
+/////////////////////////////////////////////////////////////
+#############################################################
+#                                                           #
+#    STRATEGIE: DER BAUMEISTER-ZUG                          #
+#                                                           #
+#############################################################
+
+Der Baumeister-Zug ist eine der stärksten Sonderaktionen im Spiel. Sein
+Nutzen ist nicht immer sofort ersichtlich, da er oft eine scheinbar
+hoffnungslose, blockierte Situation in einen spielentscheidenden Vorteil
+umwandelt. Der Schlüssel ist, blockierte Türme nicht als verloren, sondern
+als strategische Reserve zu betrachten.
+
+
+-------------------------------------------------------------
+SZENARIO 1: DIE BEFREIUNG ('GEFÄNGNISAUSBRUCH')
+-------------------------------------------------------------
+
+Die Lage:
+Deine Spielfigur ist in einer Ecke von gegnerischen Türmen
+eingeschlossen. Einer deiner eigenen Türme steht zwar in
+Reichweite, ist aber selbst von allen acht Seiten komplett
+umbaut und kann daher nicht normal bewegt werden. Du bist
+gefangen.
+
+Das Spielfeld (Vorher):
+
+         a      b      c      d
+      +------+------+------+------+
+    1 | (D2) | (D1) | (D1) | (D2) |
+      +------+------+------+------+
+    2 | (D1) | (H3) | (D2) | (D1) |  <-- Turm (H3) bei b2 ist blockiert.
+      +------+------+------+------+
+    3 | (D2) | (Fw) | (D1) | (D2) |  <-- Figur (Fw) bei b3 ist gefangen.
+      +------+------+------+------+
+
+Der Baumeister-Zug:
+Du aktivierst die Baumeister-Fähigkeit, wählst deinen
+blockierten Turm (H3) bei b2 als Quelle und setzt einen
+Stein davon auf den gegnerischen Turm (D1) bei c3.
+
+Das Ergebnis (Nachher):
+
+         a      b      c      d
+      +------+------+------+------+
+    1 | (D2) | (D1) | (D1) | (D2) |
+      +------+------+------+------+
+    2 | (D1) | (H2) | (D2) | (D1) |
+      +------+------+------+------+
+    3 | (D2) | (Fw) | (H2) | (D2) |  <-- Der Turm bei c3 gehört jetzt DIR.
+      +------+------+------+------+
+
+Strategischer Vorteil:
+Du hast einen Fluchtweg geschaffen. In deinem nächsten Zug
+kannst du deine Figur von b3 auf das Feld c3 ziehen und
+bist wieder voll handlungsfähig.
+
+
+-------------------------------------------------------------
+SZENARIO 2: DER GEZIELTE SCHLAG ('ÜBERNAHME')
+-------------------------------------------------------------
+
+Die Lage:
+Der Gegner besitzt den höchsten Turm auf dem Feld ((D4)) und
+droht, das Spiel zu gewinnen. Direkt daneben steht einer
+deiner Türme ((H2)), der komplett blockiert ist. Deine Figur
+steht so, dass sie an beide Türme angrenzt und die Situation
+ausnutzen kann.
+
+Das Spielfeld (Vorher):
+
+         a      b      c      d
+      +------+------+------+------+
+    1 | (D1) | (D1) | (H2) | (D1) |  <-- Dein blockierter Turm (H2) bei c1.
+      +------+------+------+------+
+    2 | (D1) | (Fw) | (D4) | (D1) |  <-- Deine Figur (Fw) bei b2.
+      +------+------+------+------+
+    3 | (D2) | (D1) | (D2) | (D1) |  <-- Der Gegner dominiert mit (D4) bei c2.
+      +------+------+------+------+
+
+Der Baumeister-Zug:
+Deine Figur (Fw) bei b2 ist der Dreh- und Angelpunkt. Du
+aktivierst den Baumeister, wählst deinen blockierten Turm
+(H2) bei c1 (grenzt an deine Figur an) und setzt einen
+Stein auf den gegnerischen Siegesturm (D4) bei c2 (grenzt
+ebenfalls an deine Figur an).
+
+Das Ergebnis (Nachher):
+
+         a      b      c      d
+      +------+------+------+------+
+    1 | (D1) | (D1) | (H1) | (D1) |
+      +------+------+------+------+
+    2 | (D1) | (Fw) | (H5) | (D1) |  <-- Du besitzt nun den höchsten Turm!
+      +------+------+------+------+
+    3 | (D2) | (D1) | (D2) | (D1) |
+      +------+------+------+------+
+
+Strategischer Vorteil:
+Ein potenziell verlorenes Spiel wurde mit einem einzigen Zug
+gedreht. Die strategische Position deiner Figur hat es dir
+erlaubt, einen nutzlosen, blockierten Turm in die Waffe zu
+verwandeln, die den Sieg des Gegners verhindert hat.
+
+
+-------------------------------------------------------------
+SZENARIO 3: DIE KONSOLIDIERUNG ('FESTUNGSBAU')
+-------------------------------------------------------------
+
+Die Lage:
+Das Spielfeld ist sehr eng. Du besitzt zwei Türme ((H2), (H3)),
+die im Zentrum stehen. Beide sind von allen Seiten umgeben und
+somit blockiert.
+
+Das Spielfeld (Vorher):
+
+         a      b      c      d      e
+      +------+------+------+------+------+
+    1 | (D1) | (D2) | (D1) | (D1) | (D2) |
+      +------+------+------+------+------+
+    2 | (D2) | (H3) | (D2) | (H2) | (D1) |  <-- Blockierte Türme b2 & d2.
+      +------+------+------+------+------+
+    3 | (D1) | (D1) | (Fw) | (D1) | (D2) |
+      +------+------+------+------+------+
+    4 | (D2) | (D1) | (D2) | (D1) | (D1) |
+      +------+------+------+------+------+
+
+Der Baumeister-Zug:
+Du aktivierst den Baumeister, wählst deinen blockierten
+Turm (H2) bei d2 und versetzt beide Steine auf deinen
+anderen blockierten Turm (H3) bei b2.
+
+Das Ergebnis (Nachher):
+
+         a      b      c      d      e
+      +------+------+------+------+------+
+    1 | (D1) | (D2) | (D1) | (D1) | (D2) |
+      +------+------+------+------+------+
+    2 | (D2) | (H5) | (D2) | (..) | (D1) |  <-- Ein mächtiger Turm (H5)!
+      +------+------+------+------+------+
+    3 | (D1) | (D1) | (Fw) | (D1) | (D2) |
+      +------+------+------+------+------+
+    4 | (D2) | (D1) | (D2) | (D1) | (D1) |
+      +------+------+------+------+------+
+
+Strategischer Vorteil:
+Du hast zwei blockierte, mittelmäßige Türme in einen
+siegfähigen Turm verwandelt.
+
+
+#############################################################
+#                                                           #
+#    STRATEGIE: DER STEINMETZ-ZUG                           #
+#                                                           #
+#############################################################
+
+Der Steinmetz-Zug ist die einzige Aktion im Spiel mit unbegrenzter
+Reichweite. Er bricht die fundamentale Regel, nur auf benachbarte
+Felder agieren zu können. Ein Steinmetz-Zug ist wie ein präziser
+Fernschuss, mit dem du das Geschehen am anderen Ende des Bretts
+direkt beeinflussen kannst.
+
+
+-------------------------------------------------------------
+SZENARIO 1: DER KÖNIGSMORD (GEGN. SIEGESTURM STOPPEN)
+-------------------------------------------------------------
+
+Die Lage:
+Der Gegner hat weit entfernt einen hohen Turm ((D4)) errichtet
+und steht kurz vor dem Sieg. Du hast neben deiner Figur einen
+eigenen Turm ((H2)) mit einer freien Seite.
+
+Das Spielfeld (Vorher):
+
+         a      b      c      d      e      f
+      +------+------+------+------+------+------+
+    1 | (D4) | (D1) | (..) | (..) | (..) | (..) | <-- Siegesturm bei a1
+      +------+------+------+------+------+------+
+    2 | (D1) | (D2) | (..) | (..) | (..) | (..) |
+      +------+------+------+------+------+------+
+    3 | (..) | (..) | (..) | (..) | (H2) | (D1) | <-- Dein Turm (H2) bei e3
+      +------+------+------+------+------+------+
+    4 | (..) | (..) | (..) | (D1) | (Fw) | (D2) | <-- Deine Figur ist weit weg
+      +------+------+------+------+------+------+
+
+Der Steinmetz-Zug:
+Du wählst deinen Turm (H2) bei e3 als Quelle, nimmst einen
+Stein und platzierst ihn zielsicher auf dem gegnerischen
+Turm (D4) bei a1.
+
+Das Ergebnis (Nachher):
+
+         a      b      c      d      e      f
+      +------+------+------+------+------+------+
+    1 | (H5) | (D1) | (..) | (..) | (..) | (..) | <-- Turm übernommen!
+      +------+------+------+------+------+------+
+    2 | (D1) | (D2) | (..) | (..) | (..) | (..) |
+      +------+------+------+------+------+------+
+    3 | (..) | (..) | (..) | (..) | (H1) | (D1) |
+      +------+------+------+------+------+------+
+    4 | (..) | (..) | (..) | (D1) | (Fw) | (D2) |
+      +------+------+------+------+------+------+
+
+Strategischer Vorteil:
+Du hast einen sicheren Sieg des Gegners vereitelt und besitzt
+nun selbst den höchsten Turm.
+
+
+-------------------------------------------------------------
+SZENARIO 2: DIE FERNUNTERSTÜTZUNG (EIGENEN TURM STÄRKEN)
+-------------------------------------------------------------
+
+Die Lage:
+Du selbst hast einen hohen Turm ((H3)), den du für den Sieg noch
+erhöhen musst. Deine Figur ist jedoch woanders beschäftigt. Ein
+benachbarter Turm ((H1)) ist entbehrlich.
+
+Das Spielfeld (Vorher):
+
+         a      b      c      d      e
+      +------+------+------+------+------+
+    1 | (H3) | (D1) | (..) | (..) | (..) | <-- Dein hoher Turm bei a1
+      +------+------+------+------+------+
+    2 | (D2) | (Fs) | (..) | (H1) | (D1) | <-- Dein Turm bei d2
+      +------+------+------+------+------+
+    3 | (D1) | (..) | (..) | (Fw) | (D2) | <-- Deine Figur agiert bei d3
+      +------+------+------+------+------+
+
+Der Steinmetz-Zug:
+Du nimmst den Stein von deinem Turm (H1) bei d2 und platzierst
+ihn auf deinem eigenen, hohen Turm (H3) bei a1.
+
+Das Ergebnis (Nachher):
+
+         a      b      c      d      e
+      +------+------+------+------+------+
+    1 | (H4) | (D1) | (..) | (..) | (..) | <-- Dein Turm ist nun sehr hoch!
+      +------+------+------+------+------+
+    2 | (D2) | (Fs) | (..) | (..) | (D1) | <-- Feld d2 ist jetzt leer.
+      +------+------+------+------+------+
+    3 | (D1) | (..) | (..) | (Fw) | (D2) |
+      +------+------+------+------+------+
+
+Strategischer Vorteil:
+Du kannst deine Figur für lokale Aufgaben einsetzen und
+gleichzeitig aus der Ferne deine Siegposition sichern.
+
+
+#############################################################
+#                                                           #
+#    STRATEGIE: DER MARKTPLATZ                              #
+#                                                           #
+#############################################################
+
+Die Marktplatz-Regel verändert das Spiel fundamental, indem sie
+das Zentrum des Bretts zu einem permanent flexiblen und extrem
+mächtigen Ort macht. Ein Turm auf dem Marktplatz kann niemals
+vollständig blockiert werden.
+
+-------------------------------------------------------------
+SZENARIO: DAS MACHTZENTRUM (TOTALE KONTROLLE)
+-------------------------------------------------------------
+
+Die Lage:
+Das Zentrum ist verdichtet. Normalerweise wären die Türme bei
+c2, c3, d2, d3 blockiert. Da sie aber auf dem Marktplatz
+stehen, bleiben sie voll einsatzfähig.
+
+Das Spielfeld (Marktplatz ist c2, c3, d2, d3):
+
+         a      b      c      d      e
+      +------+------+------+------+------+
+    1 | (D1) | (D2) | (D1) | (D1) | (D2) |
+      +------+------+------+------+------+
+    2 | (D2) | (H1) | (H3) | (D2) | (D1) | <-- (H3) ist ein Marktplatz-Turm
+      +------+------+------+------+------+
+    3 | (D1) | (D1) | (Fw) | (H1) | (D2) | <-- (H1) ist ein Marktplatz-Turm
+      +------+------+------+------+------+
+    4 | (D2) | (D1) | (D2) | (D1) | (D1) |
+      +------+------+------+------+------+
+
+Der Marktplatz-Vorteil:
+Während umliegende Türme (z.B. bei b2) feststecken, kann
+deine Figur (Fw) den Marktplatz-Turm (H3) bei c2 auswählen
+und bewegen, da die \"freie Seite\"-Regel ignoriert wird.
+
+Der Zug:
+Deine Figur (Fw) wählt den Turm (H3) auf dem Marktplatz c2,
+nimmt zwei Steine und setzt sie auf den Turm (H1) bei d3.
+
+Das Ergebnis (Nachher):
+
+         a      b      c      d      e
+      +------+------+------+------+------+
+    1 | (D1) | (D2) | (D1) | (D1) | (D2) |
+      +------+------+------+------+------+
+    2 | (D2) | (H1) | (H1) | (D2) | (D1) |
+      +------+------+------+------+------+
+    3 | (D1) | (D1) | (Fw) | (H3) | (D2) | <-- Macht im Zentrum gebündelt.
+      +------+------+------+------+------+
+    4 | (D2) | (D1) | (D2) | (D1) | (D1) |
+      +------+------+------+------+------+
+
+Strategischer Vorteil:
+Der Marktplatz wird zu deiner Festung. Du kannst Kräfte im
+Zentrum sammeln und von dort aus Züge starten, selbst wenn
+alles andere um dich herum blockiert ist. Wer den Marktplatz
+kontrolliert, kontrolliert die Flexibilität des Spiels.
+"
+autowrap_mode = 2
+
+[connection signal="pressed" from="MainLayout/ButtonContainer/SCHLIESSEN" to="." method="_on_close_button_pressed"]

@@ -1,0 +1,185 @@
+[gd_scene load_steps=8 format=3 uid="uid://bx8ka8bh0tkkt"]
+
+[ext_resource type="FontFile" uid="uid://bww00nyck7bak" path="res://assets/fonts/Alegreya_SC/AlegreyaSC-ExtraBold.ttf" id="1_j38pj"]
+[ext_resource type="Script" uid="uid://tubxmrw1bjyc" path="res://scripts/setup_menu.gd" id="1_x6tnu"]
+[ext_resource type="Texture2D" uid="uid://dvbavv4nrab4o" path="res://assets/textures/stone/stone_ui.png" id="2_j155w"]
+[ext_resource type="Texture2D" uid="uid://begpbbh5f0d4q" path="res://assets/textures/images/volterra_logo.png" id="3_cobbk"]
+[ext_resource type="PackedScene" uid="uid://c2l0531p5rucg" path="res://scenes/RulesUI.tscn" id="5_j155w"]
+
+[sub_resource type="Theme" id="Theme_j38pj"]
+default_font = ExtResource("1_j38pj")
+default_font_size = 30
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88pa6"]
+texture = ExtResource("2_j155w")
+
+[node name="SetupMenu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_j38pj")
+theme_override_styles/panel = SubResource("StyleBoxTexture_88pa6")
+script = ExtResource("1_x6tnu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LOGO" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+texture = ExtResource("3_cobbk")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Spielregeln" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0283373, 0.531402, 0.88987, 1)
+text = "alte
++
+* erweiterte *
+Spielregeln"
+
+[node name="Spiel-Variante" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.334797, 0.933379, 0.999123, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+text = "SPIEL  -   Variante  wählen "
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_focus_color = Color(0.333333, 0.933333, 1, 1)
+alignment = 1
+
+[node name="SPIELFELD-GRÖSSE" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.792641, 0.767224, 0.00251358, 1)
+theme_override_colors/font_shadow_color = Color(0.0177324, 0.0177324, 0.0177324, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+text = "SPIELFELD  -  Grösse  wählen"
+horizontal_alignment = 1
+
+[node name="BreiteTiefe" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Breite" type="Label" parent="VBoxContainer/BreiteTiefe"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.792157, 0.768627, 0.00392157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+text = "Breite   :   "
+
+[node name="WidthSpinBox" type="SpinBox" parent="VBoxContainer/BreiteTiefe"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+theme_override_constants/field_and_buttons_separation = 15
+min_value = 4.0
+max_value = 12.0
+value = 5.0
+alignment = 1
+
+[node name="Tiefe" type="Label" parent="VBoxContainer/BreiteTiefe"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.792157, 0.768627, 0.00392157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 8
+text = "           Tiefe   :   "
+
+[node name="HeightSpinBox" type="SpinBox" parent="VBoxContainer/BreiteTiefe"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+theme_override_constants/field_and_buttons_separation = 15
+min_value = 5.0
+max_value = 12.0
+value = 5.0
+alignment = 1
+
+[node name="Überschrift Checkboxen" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.792157, 0.768627, 0.00392157, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 5
+text = "Sonderregeln  -  optional"
+horizontal_alignment = 1
+
+[node name="SonderregelnContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SteinmetzCheckBox" type="CheckBox" parent="VBoxContainer/SonderregelnContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "   Steinmetz"
+
+[node name="BaumeisterCheckBox" type="CheckBox" parent="VBoxContainer/SonderregelnContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "  Baumeister  -  1 x pro Spiel"
+
+[node name="MarktplatzCheckBox" type="CheckBox" parent="VBoxContainer/SonderregelnContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "  Marktplatz"
+
+[node name="Control-Space" type="Control" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.197379, 0.701698, 0, 1)
+text = "    Spiel      -->   JETZT   <--      Starten   "
+
+[node name="ControlTRICK" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DebugCheckBox" type="CheckBox" parent="VBoxContainer/ControlTRICK"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.156863, 0.243137, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 25
+text = "  <---  Debug - Meldungen   in   Konsole"
+icon_alignment = 1
+expand_icon = true
+
+[node name="RulesUI" parent="." instance=ExtResource("5_j155w")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Spielregeln" to="." method="_on_spielregeln_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

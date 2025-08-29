@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dvjrvbsp3o8xn"
+path.s3tc="res://.godot/imported/modular_ancient_house_01_1.png-e9a5117a1f6f517ad8696055cfef87d2.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "764dc3dcfcc3b632e8c7944c48cc8227"
+}
+
+[deps]
+
+source_file="res://assets/models/modular_ancient_house_01_1.png"
+dest_files=["res://.godot/imported/modular_ancient_house_01_1.png-e9a5117a1f6f517ad8696055cfef87d2.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

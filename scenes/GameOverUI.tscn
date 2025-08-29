@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://2le1iei0t5hg"]
+
+[ext_resource type="Script" uid="uid://d0i0uknpm4q3u" path="res://scripts/game_over_ui.gd" id="1_wv210"]
+
+[node name="GameOverUI" type="VBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 102.0
+grow_horizontal = 2
+script = ExtResource("1_wv210")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.16278, 0.0588021, 0.0101464, 0.631373)
+
+[node name="WinnerLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.111959, 0.187797, 0.483885, 1)
+theme_override_colors/font_shadow_color = Color(0.506195, 0.592006, 0.242459, 1)
+theme_override_font_sizes/font_size = 37
+horizontal_alignment = 1
+
+[node name="Nochmal" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Nochmal SPIELEN"
+
+[connection signal="pressed" from="Nochmal" to="." method="_on_button_pressed"]

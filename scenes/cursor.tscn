@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://080ovd61emhk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7ugn"]
+albedo_color = Color(0.156822, 0.450991, 0.809211, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_1eco6"]
+material = SubResource("StandardMaterial3D_d7ugn")
+inner_radius = 0.084
+outer_radius = 0.141
+
+[node name="Cursor" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_1eco6")
