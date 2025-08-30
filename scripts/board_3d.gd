@@ -786,10 +786,13 @@ func _can_player_move_pawn(player: GameManager.Player) -> bool:
 # in board_3d.gd
 
 func _can_player_move_tower(player: GameManager.Player) -> bool:
-	# KORREKTUR: Die Variable "pawn" wird hier korrekt deklariert.
 	var pawn = light_pawn if player == GameManager.Player.LIGHT else dark_pawn
 	var pawn_coords = Vector2i(round((pawn.position.x + board_offset.x) / SPACING), round((pawn.position.z + board_offset.z) / SPACING))
 	
+	# --- DEBUG-SPION für Turm-Züge ---
+	var player_name = GameManager.get_player_name(player)
+	print("\n--- CHECK: Kann Spieler %s einen Turm bewegen? (Pawn bei %s) ---" % [player_name, _coords_to_notation(pawn_coords)])
+
 	var pawn_island = null
 	if not islands.is_empty():
 		for island in islands:
@@ -799,15 +802,23 @@ func _can_player_move_tower(player: GameManager.Player) -> bool:
 	
 	var possible_sources = []
 	for source_coords in get_neighbor_coords(pawn_coords):
+		# DEINE LOGIK: Insel-Prüfung
 		if pawn_island != null and not source_coords in pawn_island:
 			continue
 		if _is_valid_source_tower(source_coords):
 			possible_sources.append(source_coords)
+	
+	# --- DEBUG-SPION ---
+	print("Gefundene Quell-Türme: ", possible_sources.size())
+	if pawn_island != null: print("Prüfe nur innerhalb von Insel: ", pawn_island)
 			
-	if possible_sources.is_empty(): return false
+	if possible_sources.is_empty(): 
+		print(">> ERGEBNIS: NEIN (Keine gültigen Quell-Türme gefunden)")
+		return false
 
 	for source in possible_sources:
 		for target_coords in get_neighbor_coords(pawn_coords):
+			# DEINE LOGIK: Insel-Prüfung
 			if pawn_island != null and not target_coords in pawn_island: continue
 			if target_coords == source: continue
 			
@@ -820,11 +831,14 @@ func _can_player_move_tower(player: GameManager.Player) -> bool:
 			if is_empty:
 				if GameManager.game_variant == "arena":
 					if foundation_grid.has(target_coords) and not foundation_grid[target_coords].is_in_group("obstacles"):
+						print(">> ERGEBNIS: JA (Kann von %s auf leeres Feld %s ziehen)" % [_coords_to_notation(source), _coords_to_notation(target_coords)])
 						return true
 			else:
-
 				if not board_grid[target_coords].back().is_in_group("obstacles"):
+					print(">> ERGEBNIS: JA (Kann von %s auf Turm %s ziehen)" % [_coords_to_notation(source), _coords_to_notation(target_coords)])
 					return true
+					
+	print(">> ERGEBNIS: NEIN (Keine gültigen Ziel-Felder für gefundene Quell-Türme)")
 	return false
 		
 func can_player_perform_remaining_actions(player: GameManager.Player) -> bool:
@@ -854,16 +868,31 @@ func determine_winner():
 					light_towers.append(height)
 				else:
 					dark_towers.append(height)
-	light_towers.sort(); light_towers.reverse()
-	dark_towers.sort(); dark_towers.reverse()
-	
+	light_towers.sort()
+	light_towers.reverse()
+	dark_towers.sort()
+	dark_towers.reverse()
+
+	# --- DEBUG-SPION für Sieger-Ermittlung ---
+	print("\n--- GEWINNER-ERMITTLUNG DIAGNOSE ---")
+	print("Türme von HELL (intern gezählt): ", light_towers)
+	print("Türme von DUNKEL (intern gezählt): ", dark_towers)
+	print("------------------------------------")
+	# --- ENDE SPION ---
+
 	var max_len = max(light_towers.size(), dark_towers.size())
 	for i in range(max_len):
 		var light_h = light_towers[i] if i < light_towers.size() else 0
 		var dark_h = dark_towers[i] if i < dark_towers.size() else 0
-		if light_h > dark_h: return GameManager.Player.LIGHT
-		if dark_h > light_h: return GameManager.Player.DARK
-	return null
+		if light_h > dark_h:
+			print("DEBUG-SIEGER: HELL gewinnt bei Turm #%d (%d > %d)" % [i + 1, light_h, dark_h])
+			return GameManager.Player.LIGHT
+		if dark_h > light_h:
+			print("DEBUG-SIEGER: DUNKEL gewinnt bei Turm #%d (%d > %d)" % [i + 1, dark_h, light_h])
+			return GameManager.Player.DARK
+	
+	print("DEBUG-SIEGER: Unentschieden nach allen Vergleichen.")
+	return null # Unentschieden
 
 func _check_for_repetition():
 	var current_hash = _get_board_hash()

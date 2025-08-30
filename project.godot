@@ -13,6 +13,7 @@ config_version=5
 config/name="VOLTERRA_3D_GEM"
 run/main_scene="uid://bx8ka8bh0tkkt"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/image="uid://c5lmbelrhsri8"
 config/icon="uid://c5lmbelrhsri8"
 
 [autoload]

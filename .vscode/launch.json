@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+      {
+        "name": "Godot 4: Launch Project",
+        "type": "godot",
+        "request": "launch",
+        "project": "${workspaceFolder}",
+        "editor_path": "d:\\4-DAT\\SCHULE\\ChatGPT\\KREATIV_Spiel\\SW\\Godot_v4.4.1-stable_win64\\Godot_v4.4.1-stable_win64.exe",
+        "address": "127.0.0.1",
+        "port": 6006
+      }
+    ]
+  }
+  
