@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0yqgt50f3fij"]
+[gd_scene load_steps=6 format=3 uid="uid://b0yqgt50f3fij"]
 
-[ext_resource type="Script" uid="uid://bh6mowpyufqqh" path="res://scripts/foundation_tile.gd" id="1_4w0j2"]
+[ext_resource type="Script" uid="uid://bh6mowpyufqqh" path="res://scripts/foundation_tile.gd" id="1_c211s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_61yfb"]
 size = Vector3(1, 0.02, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i85au"]
+size = Vector3(1, 0.01, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujc1h"]
 transparency = 1
@@ -11,19 +14,22 @@ albedo_color = Color(0, 0.580392, 1, 0.392157)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6b6a2"]
 material = SubResource("StandardMaterial3D_ujc1h")
-size = Vector3(1, 0.02, 1)
+size = Vector3(1.01, 0.01, 1.01)
 
 [node name="FoundationTile" type="Node3D" groups=["board_element"]]
-script = ExtResource("1_4w0j2")
+script = ExtResource("1_c211s")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.115, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_61yfb")
 
+[node name="NewBoxMesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_i85au")
+
 [node name="HighlightMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.115, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
 visible = false
 mesh = SubResource("BoxMesh_6b6a2")
 

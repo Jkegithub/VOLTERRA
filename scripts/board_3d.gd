@@ -208,12 +208,10 @@ func _start_new_turn():
 	_clear_visual_highlights()
 	_update_cursor_position()
 	
-	var can_move_pawn = _can_player_move_pawn(GameManager.current_player)
-	var can_move_tower = _can_player_move_tower(GameManager.current_player)
-	
-	if not (can_move_pawn and can_move_tower):
+	# KORREKTUR: Ruft jetzt die neue, intelligente Prüffunktion auf
+	if not can_player_complete_a_full_turn(GameManager.current_player):
 		var player_name = GameManager.get_player_name(GameManager.current_player)
-		GameManager.debug_log("SPIELENDE: Spieler %s kann nicht mehr beide Aktionen ausführen." % player_name)
+		GameManager.debug_log("SPIELENDE: Spieler %s kann keine vollständige Zug-Sequenz mehr ausführen." % player_name)
 		GameManager.end_the_game(determine_winner())
 		return
 
@@ -743,8 +741,12 @@ func _is_valid_source_tower(coords: Vector2i) -> bool:
 		var free_side_rule_active = (GameManager.game_variant == "arena")
 		var is_on_marketplace = foundation_grid.has(coords) and foundation_grid[coords].is_in_group("marketplace")
 		
-		if free_side_rule_active and not has_free_side(coords) and not is_on_marketplace:
-			return false
+		if free_side_rule_active and not is_on_marketplace:
+			var has_side = has_free_side(coords)
+			print("DEBUG: Prüfe freie Seite für Turm bei ", _coords_to_notation(coords), " -> Ergebnis: ", has_side)
+			if not has_side:
+				return false
+		
 		return true
 	
 	return false
@@ -846,12 +848,80 @@ func can_player_perform_remaining_actions(player: GameManager.Player) -> bool:
 	if not GameManager.tower_has_moved and _can_player_move_tower(player): return true
 	return false
 
-func has_free_side(coords: Vector2i) -> bool:
-	for neighbor_coords in get_neighbor_coords(coords):
-		if not (foundation_grid.has(neighbor_coords) and board_grid.has(neighbor_coords) and not board_grid[neighbor_coords].is_empty()):
-			return true
-	return false
+# func hasfree vorher
+#  func has_free_side(coords: Vector2i) -> bool:
+# 	for neighbor_coords in get_neighbor_coords(coords):
+# 		if not (foundation_grid.has(neighbor_coords) and board_grid.has(neighbor_coords) and not board_grid[neighbor_coords].is_empty()):
+# 			return true
+# 	return false
 
+func has_free_side(coords: Vector2i) -> bool:
+	# Gehe alle 8 Nachbarn durch
+	for neighbor_coords in get_neighbor_coords(coords):
+		# Ein Feld hat eine freie Seite, wenn ein Nachbar KEINEN Turm hat.
+		# Ein Feld hat KEINEN Turm, wenn es keinen Eintrag im board_grid hat
+		# oder der Eintrag leer ist.
+		if not board_grid.has(neighbor_coords) or board_grid[neighbor_coords].is_empty():
+			return true # Freie Seite gefunden, Prüfung beendet.
+	
+	# Wenn die Schleife durchläuft, ohne eine freie Seite zu finden, ist der Turm blockiert.
+	return false
+	
+func _get_all_valid_pawn_moves(player: GameManager.Player) -> Array[Vector3]:
+	var valid_moves: Array[Vector3] = []
+	var pawn = light_pawn if player == GameManager.Player.LIGHT else dark_pawn
+	var pawn_coords = Vector2i(round((pawn.position.x + board_offset.x) / SPACING), round((pawn.position.z + board_offset.z) / SPACING))
+	
+	var pawn_island = null
+	if not islands.is_empty():
+		for island in islands:
+			if pawn_coords in island:
+				pawn_island = island
+				break
+	
+	for target_coords in get_neighbor_coords(pawn_coords):
+		if pawn_island != null and not target_coords in pawn_island:
+			continue
+			
+		if board_grid.has(target_coords) and not board_grid[target_coords].is_empty():
+			var top_piece = board_grid[target_coords].back()
+			if top_piece.color == player and not top_piece.is_in_group("obstacles"):
+				var target_pos = Vector3(target_coords.x * SPACING, board_grid[target_coords].size() * PIECE_HEIGHT, target_coords.y * SPACING) - self.board_offset
+				valid_moves.append(target_pos)
+				
+	return valid_moves
+
+func can_player_complete_a_full_turn(player: GameManager.Player) -> bool:
+	# Szenario 1: Ist ein "Turm zuerst"-Zug möglich?
+	# Dafür müssen beide Aktionen von der Startposition aus möglich sein.
+	if _can_player_move_tower(player) and _can_player_move_pawn(player):
+		return true
+
+	# Szenario 2 : Ist ein "Figur zuerst"-Zug möglich?
+	# Dafür muss es mindestens EINEN möglichen Figuren-Zug geben,
+	# von dessen neuer Position aus dann ein Turm-Zug möglich ist.
+	var pawn = light_pawn if player == GameManager.Player.LIGHT else dark_pawn
+	var original_pos = pawn.position
+	
+	var possible_pawn_moves = _get_all_valid_pawn_moves(player)
+	
+	# Wenn nicht mal ein Figuren-Zug möglich ist, ist das Spiel definitiv vorbei.
+	if possible_pawn_moves.is_empty():
+		return false
+	
+	# Simuliere jeden möglichen Figuren-Zug
+	for target_pos in possible_pawn_moves:
+		pawn.position = target_pos # Simuliere den Zug
+		var tower_move_is_possible_after_pawn_move = _can_player_move_tower(player)
+		pawn.position = original_pos # Setze die Simulation zurück
+		
+		# Wenn wir auch nur eine Sequenz finden, die funktioniert, kann der Spieler ziehen.
+		if tower_move_is_possible_after_pawn_move:
+			return true
+			
+	# Wenn wir alle Figuren-Züge durchprobiert haben und keiner einen Turm-Zug freischaltet,
+	# dann ist das Spiel wirklich vorbei.
+	return false	
 
 # ============================================================================
 # 11. Spielende-Logik
@@ -1019,14 +1089,26 @@ func _create_foundation_tile_at(coords: Vector2i):
 	foundation.coordinates = coords
 	foundation_grid[coords] = foundation
 	
+	# KORREKTUR: Steuert die Sichtbarkeit des permanenten Mesh, nicht des Highlight-Mesh
+	var permanent_mesh = foundation.get_node("NewBoxMesh")
+	if is_instance_valid(permanent_mesh):
+		# Mache das permanente Mesh NUR im Arena-Modus sichtbar
+		if GameManager.game_variant == "arena":
+			permanent_mesh.show()
+		else:
+			permanent_mesh.hide()
+
 	if coords in marketplace_coords:
 		foundation.add_to_group("marketplace")
-		var mesh = foundation.get_node("NewBoxMesh")
-		var mat = mesh.get_surface_override_material(0).duplicate() as StandardMaterial3D
-		mat.albedo_color = Color.GOLD.lightened(0.3)
-		mesh.set_surface_override_material(0, mat)
-	
-# Ersetze die komplette Funktion mit dieser bereinigten Version.
+		# Die Marktplatz-Logik, die ebenfalls "NewBoxMesh" verwendet, bleibt korrekt
+		var mesh = foundation.get_node("NewBoxMesh") 
+		if is_instance_valid(mesh):
+			# Mache das Marktplatz-Feld sichtbar, auch wenn es nicht Arena ist
+			mesh.show()
+			var mat = mesh.get_surface_override_material(0).duplicate() as StandardMaterial3D
+			mat.albedo_color = Color.GOLD.lightened(0.3)
+			mesh.set_surface_override_material(0, mat)
+
 # Ersetze die komplette Funktion mit dieser verbesserten Version.
 func _place_obstacles_fairly() -> Array:
 	if obstacle_scenes.is_empty():
